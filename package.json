@@ -1,0 +1,46 @@
+{
+  "name": "gitpulse",
+  "version": "0.1.0",
+  "description": "Turn a git repository's history into a single-file HTML dashboard. Zero dependencies.",
+  "type": "module",
+  "bin": {
+    "gitpulse": "bin/gitpulse.js"
+  },
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check bin/gitpulse.js && node --check src/cli.js",
+    "demo": "node bin/gitpulse.js . -o pulse.html --open"
+  },
+  "keywords": [
+    "git",
+    "analytics",
+    "dashboard",
+    "churn",
+    "bus-factor",
+    "html",
+    "report",
+    "cli",
+    "visualization"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangtianbao-debug/gitpulse.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wangtianbao-debug/gitpulse/issues"
+  },
+  "homepage": "https://github.com/wangtianbao-debug/gitpulse#readme"
+}

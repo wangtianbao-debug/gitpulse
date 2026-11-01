@@ -1,0 +1,29 @@
+# GitHub Actions CI for gitpulse.
+# Enable it by copying this file to .github/workflows/ci.yml — pushing that
+# path needs a token with the `workflow` scope, so it ships here instead.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: node ${{ matrix.node }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [18, 20, 22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Test
+        run: node --test
+      - name: Smoke test the CLI
+        run: node bin/gitpulse.js . --json
